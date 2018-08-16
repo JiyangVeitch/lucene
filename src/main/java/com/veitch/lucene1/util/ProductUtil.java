@@ -17,6 +17,7 @@ public class ProductUtil {
 
 	public static void main(String[] args) throws IOException, InterruptedException, AWTException {
 
+		//此处为140k_products.txt文件所在的全路径
 		String fileName = "D:\\project\\lucene1\\src\\main\\resources\\140k_products.txt";
 		
 		List<Product> products = file2list(fileName);

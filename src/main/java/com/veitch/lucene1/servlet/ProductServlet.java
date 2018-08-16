@@ -123,6 +123,7 @@ public class ProductServlet extends HttpServlet {
         Directory index = new RAMDirectory();
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
         IndexWriter writer = new IndexWriter(index, config);
+        //此处为140k_products.txt文件所在的全路径
         String fileName = "D:\\project\\lucene1\\src\\main\\resources\\140k_products.txt";
         List<Product> products = ProductUtil.file2list(fileName);
         int total = products.size();
