@@ -1,7 +1,6 @@
 package com.veitch.lucene1.servlet;
 
 import com.veitch.lucene1.pojo.Product;
-import com.veitch.lucene1.util.Page;
 import com.veitch.lucene1.util.ProductUtil;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
