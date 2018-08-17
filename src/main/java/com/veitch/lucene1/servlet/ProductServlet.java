@@ -46,8 +46,13 @@ public class ProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Directory index;
         try {
-            // 准备中文分词器
+            /*
+            *准备中文分词器
+            * 测试表明,IKAnalyzer比smartcn好用,但是二者都有点问题
+            *SmartChineseAnalyzer analyzer=new SmartChineseAnalyzer();
+            * */
             IKAnalyzer analyzer = new IKAnalyzer();
+
             // 创建索引 ,若session中已经有了索引,那么就不再创建
             if (session.getAttribute("index") == null) {
                 // 无索引时,调用createIndex方法来创建索引
