@@ -82,27 +82,31 @@ public class ProductServlet extends HttpServlet {
                 //循环打印出单行搜索结果的不同字段中的值
                 for (IndexableField f : fields) {
 
+                    if ("id".equals(f.name())) {
+                        product.setId(Integer.valueOf(d.get(f.name())));
+                    }
+
                     if ("name".equals(f.name())) {
                         TokenStream tokenStream = analyzer.tokenStream(f.name(), new StringReader(d.get(f.name())));
                         String fieldContent = highlighter.getBestFragment(tokenStream, d.get(f.name()));
                         product.setName(fieldContent);
                         /*System.out.println(product.getName());*/
-
-                    } else {
-                        if (product.getId() == 0) {
-                            product.setId(Integer.parseInt(d.get(f.name())));
-                        } else if (product.getCategory() == null) {
-                            product.setCategory(d.get(f.name()));
-                        } else if (product.getPrice() == 0) {
-                            product.setPrice(Float.parseFloat(d.get(f.name())));
-                        } else if (product.getPlace() == null) {
-                            product.setPlace(d.get(f.name()));
-                        } else if (product.getCode() == null) {
-                            product.setCode(d.get(f.name()));
-                        }
-                        /*System.out.print("\t" + d.get(f.name()));*/
                     }
+
+                    if ("category".equals(f.name())) {
+                        product.setCategory(d.get(f.name()));
+                    }
+
+                    if ("price".equals(f.name())) {
+                        product.setPrice(Float.parseFloat(d.get(f.name())));
+                    }
+
+                    if ("place".equals(f.name())) {
+                        product.setPlace(d.get(f.name()));
+                    }
+
                 }
+
                 list.add(product);
             }
             //  关闭查询
